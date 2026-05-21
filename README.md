@@ -124,4 +124,4 @@ docker pull shravanipatil30/helloworldpython:latest
 
 ## Author
 
-**Atul Kamble** — [github.com/atulkamble](https://github.com/atulkamble)
+**Atul Kamble** — [github.com/shravanipatil35](https://github.com/shravanipatil35)
