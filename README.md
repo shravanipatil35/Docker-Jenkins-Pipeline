@@ -42,10 +42,10 @@ CMD ["python", "helloworld.py"]
 
 ```bash
 # Build the image
-docker build -t atuljkamble/helloworldpython:latest .
+docker build -t shravanipatil30/helloworldpython:latest .
 
 # Run the container
-docker run atuljkamble/helloworldpython:latest
+docker run shravanipatil30/helloworldpython:latest
 ```
 
 ---
@@ -85,7 +85,7 @@ Pipeline
   - Docker Pipeline
   - Credentials Binding
 - **Docker** installed and accessible on the Jenkins agent
-- **DockerHub account** — image is published to `atuljkamble/helloworldpython`
+- **DockerHub account** — image is published to `shravanipatil30/helloworldpython`
 
 ---
 
@@ -107,17 +107,17 @@ Each successful build produces two Docker image tags:
 
 | Tag | Description |
 |---|---|
-| `atuljkamble/helloworldpython:<BUILD_NUMBER>` | Immutable, build-specific tag |
-| `atuljkamble/helloworldpython:latest` | Always points to the most recent build |
+| `shravanipatil30/helloworldpython:<BUILD_NUMBER>` | Immutable, build-specific tag |
+| `shravanipatil30/helloworldpython:latest` | Always points to the most recent build |
 
 ---
 
 ## DockerHub
 
-Image: [https://hub.docker.com/r/atuljkamble/helloworldpython](https://hub.docker.com/r/atuljkamble/helloworldpython)
+Image: [https://hub.docker.com/r/shravanipatil30/helloworldpython](https://hub.docker.com/r/shravanipatil30/helloworldpython)
 
 ```bash
-docker pull atuljkamble/helloworldpython:latest
+docker pull shravanipatil30/helloworldpython:latest
 ```
 
 ---
