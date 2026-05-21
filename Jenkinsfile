@@ -10,37 +10,44 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} -t ${IMAGE_NAME}:latest .'
+                sh """
+                docker build -t ${IMAGE_NAME}:${IMAGE_TAG} -t ${IMAGE_NAME}:latest .
+                """
             }
         }
 
-        stage('Docker Push') {
+        stage('Docker Login & Push') {
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: 'd2be55c8-bf02-47d1-872c-70e2b76080ca',
+                    credentialsId: 'dockerhub-creds', 
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
                 )]) {
-                    sh 'echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin'
-                    sh 'docker push ${IMAGE_NAME}:${IMAGE_TAG}'
-                    sh 'docker push ${IMAGE_NAME}:latest'
+
+                    sh """
+                    echo \$DOCKER_PASS | docker login -u \$DOCKER_USER --password-stdin
+                    docker push ${IMAGE_NAME}:${IMAGE_TAG}
+                    docker push ${IMAGE_NAME}:latest
+                    """
                 }
             }
         }
 
-        stage('Container Run') {
+        stage('Run Container') {
             steps {
-                sh 'docker run -d ${IMAGE_NAME}:${IMAGE_TAG}'
+                sh """
+                docker run -d -p 5000:5000 ${IMAGE_NAME}:${IMAGE_TAG}
+                """
             }
         }
     }
 
     post {
         success {
-            echo 'Docker image built and pushed successfully!'
+            echo 'Build and Push Successful'
         }
         failure {
-            echo 'Docker build or push failed.'
+            echo 'Pipeline Failed'
         }
     }
 }
