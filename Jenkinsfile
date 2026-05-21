@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        IMAGE_NAME = 'atuljkamble/helloworldpython'
+        IMAGE_NAME = 'shravanipatil30/helloworldpython'
         IMAGE_TAG  = "${env.BUILD_NUMBER}"
     }
     stages {
